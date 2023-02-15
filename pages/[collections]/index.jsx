@@ -32,6 +32,7 @@ export const getStaticProps = async (context) => {
 
   return {
     props: { collection: selectedCollection },
+    revalidate: 60,
   };
 };
 
