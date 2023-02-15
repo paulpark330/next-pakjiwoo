@@ -1,6 +1,6 @@
-const API_URL = "http://localhost:1337";
+// const API_URL = "http://localhost:1337";
 
-// const API_URL = "https://strapi-pakjiwoo.herokuapp.com"
+const API_URL = "https://strapi-pakjiwoo.herokuapp.com"
 
 export const getAllCollections = async () => {
   const response = await fetch(`${API_URL}/api/photos?populate=*`);

@@ -7,7 +7,7 @@ const Collections = (props) => {
   return (
     <div>
       <Box sx={{ width: "100%", height: "100%", overflowY: "scroll" }}>
-        <ImageList variant="masonry" cols={3} gap={8}>
+        <ImageList variant="masonry" cols={3} gap={10}>
           {props.collection.map((item) => (
             <ImageListItem className={styles["image-list-item"]} key={item.id}>
               <Image
