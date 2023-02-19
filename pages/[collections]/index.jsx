@@ -9,8 +9,11 @@ const Collections = (props) => {
       <Box sx={{ width: "100%", height: "100%", overflowY: "scroll" }}>
         <ImageList variant="masonry" cols={3} gap={10}>
           {props.collection.map((item) => (
-            <ImageListItem className={styles["image-list-item"]} key={item.id}>
-              <Image
+            <ImageListItem
+              style={{ height: item.cover.attributes.formats.medium.height }}
+              key={item.id}
+            >
+              <img
                 fill
                 src={item.cover.attributes.formats.large.url}
                 alt={item.name}
