@@ -1,12 +1,7 @@
 import Head from "next/head";
-import { useState } from "react";
-import { getAllCollections } from "../helpers/api-utils";
 import styles from "../styles/Home.module.scss";
-import Layout from "../components/layout/layout";
 
-const Home = (props) => {
-  const [collections, setCollections] = useState(props.collections);
-
+const Home = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -17,14 +12,6 @@ const Home = (props) => {
       <main className={styles.main}>Collage</main>
     </div>
   );
-};
-
-export const getStaticProps = async () => {
-  const collections = await getAllCollections();
-
-  return {
-    props: { collections: collections },
-  };
 };
 
 export default Home;

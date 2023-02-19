@@ -1,27 +1,26 @@
-import { Box, ImageList, ImageListItem } from "@mui/material";
+import { Box } from "@mui/material";
+import { Masonry } from "@mui/lab";
+
 import Image from "next/image";
+
 import { getCollectionByName, getNavOptions } from "../../helpers/api-utils";
-import styles from "../../styles/Collections.module.scss";
 
 const Collections = (props) => {
   return (
     <div>
-      <Box sx={{ width: "100%", height: "100%", overflowY: "scroll" }}>
-        <ImageList variant="masonry" cols={3} gap={10}>
+      <Box sx={{ width: "100%", height: "100%" }}>
+        <Masonry columns={3} spacing={1}>
           {props.collection.map((item) => (
-            <ImageListItem
-              style={{ height: item.cover.attributes.formats.medium.height }}
+            <Image
+              width={item.cover.attributes.formats.small.width}
+              height={item.cover.attributes.formats.small.height}
               key={item.id}
-            >
-              <img
-                fill
-                src={item.cover.attributes.formats.large.url}
-                alt={item.name}
-                style={{ objectFit: "cover" }}
-              />
-            </ImageListItem>
+              src={item.cover.attributes.formats.large.url}
+              alt={item.name}
+              style={{ objectFit: "cover" }}
+            />
           ))}
-        </ImageList>
+        </Masonry>
       </Box>
     </div>
   );

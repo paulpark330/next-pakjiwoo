@@ -1,6 +1,6 @@
 // const API_URL = "http://localhost:1337";
 
-const API_URL = "https://strapi-pakjiwoo-production.up.railway.app"
+const API_URL = "https://strapi-pakjiwoo-production.up.railway.app";
 
 export const getAllCollections = async () => {
   const response = await fetch(`${API_URL}/api/photos?populate=*`);
@@ -22,32 +22,29 @@ export const getAllCollections = async () => {
 };
 
 export const getCollectionByName = async (name) => {
-  const response = await fetch(`${API_URL}/api/photos?populate=*`);
+  const response = await fetch(
+    `${API_URL}/api/photos?filters[category][$eq]=${name}&populate[0]=cover`
+  );
   const data = await response.json();
 
-  const collections = data.data.filter((collection) => {
-    return collection.attributes.category === name;
-  });
-
-  if (collections) {
-    const filteredCollections = [];
-    collections.forEach((collection) => {
-      filteredCollections.push({
+  if (data.data.length > 0) {
+    const collections = [];
+    data.data.forEach((collection) => {
+      collections.push({
         id: collection.id,
         name: collection.attributes.collectionName,
         category: collection.attributes.category,
         cover: collection.attributes.cover.data,
-        photos: collection.attributes.album.data,
       });
     });
-    return filteredCollections;
+    return collections;
   } else {
     return null;
   }
 };
 
 export const getNavOptions = async () => {
-  const response = await fetch(`${API_URL}/api/nav-options?populate=*`);
+  const response = await fetch(`${API_URL}/api/nav-options`);
   const data = await response.json();
 
   const navOptions = [];
