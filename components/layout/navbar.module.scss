@@ -1,11 +1,10 @@
-.container {
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 10px 0 10px 10px;
-  gap: 20px;
-  font-size: 15px;
-  font-weight: 200;
+.menu {
+  position: fixed;
+  top: 32px;
+  left: 10px;
+  cursor: pointer;
 }
+ .option {
+  font-size: 18px;
+  font-weight: 200;
+ }
