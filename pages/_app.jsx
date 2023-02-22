@@ -1,25 +1,14 @@
 import Layout from "../components/layout/layout";
-import { getNavOptions } from "../helpers/api-utils";
 import "../styles/globals.scss";
+import { Analytics } from "@vercel/analytics/react";
 
-function MyApp({ Component, pageProps, navOptions }) {
+function MyApp({ Component, pageProps }) {
   return (
-    <Layout navOptions={navOptions}>
+    <Layout>
       <Component {...pageProps} />
+      <Analytics />
     </Layout>
   );
 }
-
-MyApp.getInitialProps = async ({ Component, ctx }) => {
-  let pageProps = {};
-
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
-  }
-
-  const navOptions = await getNavOptions();
-
-  return { pageProps, navOptions };
-};
 
 export default MyApp;
