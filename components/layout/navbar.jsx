@@ -54,6 +54,8 @@ const Navbar = ({ navOptions }) => {
             boxSizing: "border-box",
             border: "none",
             position: "static",
+            backgroundColor: "#121212",
+            color: "white"
           },
           "& .MuiList-root": {
             padding: 0,
