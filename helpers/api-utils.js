@@ -23,7 +23,7 @@ export const getAllCollections = async () => {
 
 export const getCollectionByName = async (name) => {
   const response = await fetch(
-    `${API_URL}/api/photos?filters[category][$eq]=${name}&populate[0]=cover`
+    `${API_URL}/api/photos?filters[category][$eq]=${name}&populate[0]=cover&sort[0]=id`
   );
   const data = await response.json();
 
@@ -43,19 +43,31 @@ export const getCollectionByName = async (name) => {
   }
 };
 
-export const getNavOptions = async () => {
-  const response = await fetch(`${API_URL}/api/nav-options`);
-  const data = await response.json();
+export const getNavOptions = () => {
+  // const response = await fetch(`${API_URL}/api/nav-options`);
+  // const data = await response.json();
 
-  const navOptions = [];
+  // const navOptions = [];
 
-  data.data.forEach((option) => {
-    navOptions.push({
-      name: option.attributes.name,
-      category: option.attributes.category,
-      sort: option.attributes.sort,
-    });
-  });
+  // data.data.forEach((option) => {
+  //   navOptions.push({
+  //     name: option.attributes.name,
+  //     category: option.attributes.category,
+  //     sort: option.attributes.sort,
+  //   });
+  // });
 
-  return navOptions.sort((a, b) => a.sort - b.sort);
+  const navOptions = [
+    { name: "Clients", category: "clients", sort: 1 },
+    { name: "Personal", category: "personal", sort: 2 },
+    { name: "Actor/Actress", category: "actor", sort: 3 },
+    { name: "Music", category: "music", sort: 4 },
+    { name: "Sihogonsa", category: "sihogonsa", sort: 5 },
+    { name: "Wedding", category: "wedding", sort: 6 },
+    { name: "Musical", category: "musical", sort: 7 },
+  ];
+
+  return navOptions;
+
+  // return navOptions.sort((a, b) => a.sort - b.sort);
 };
