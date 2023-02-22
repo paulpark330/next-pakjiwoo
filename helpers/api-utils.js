@@ -8,8 +8,6 @@ export const getAllCollections = async () => {
   );
   const data = await response.json();
 
-  
-
   if (data.data.length > 0) {
     const collections = [];
 
@@ -45,6 +43,19 @@ export const getCollectionByName = async (name) => {
       });
     });
     return collections;
+  } else {
+    return null;
+  }
+};
+
+export const getAlbumById = async (category, id) => {
+  const response = await fetch(
+    `${API_URL}/api/photos?populate[0]=album&filters[category][$eq]=${category}&filters[id][$eq]=${id}`
+  );
+  const data = await response.json();
+
+  if (data.data.length > 0) {
+    return data.data[0].attributes.album.data;
   } else {
     return null;
   }

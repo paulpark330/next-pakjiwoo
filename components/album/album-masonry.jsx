@@ -4,10 +4,8 @@ import Image from "next/image";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import { useRouter } from "next/router";
 
-const CollectionMasonry = (props) => {
-  const router = useRouter();
+const AlbumMasonry = (props) => {
   const theme = useTheme();
   const isXlarge = useMediaQuery(theme.breakpoints.up("xl"));
   const isLarge = useMediaQuery(theme.breakpoints.between("lg", "xl"));
@@ -27,24 +25,17 @@ const CollectionMasonry = (props) => {
     else if (isMobile) return 1;
   };
 
-  const handleClick = (album) => {
-    console.log(album);
-
-    router.push(`/${album.category}/${album.id}`)
-  };
-
   return (
     <Box sx={{ width: "100%", height: "100%" }}>
       <Masonry columns={columns()} spacing={1} sx={{ margin: 0 }}>
-        {props.collection.map((item) => (
+        {props.album.map((item) => (
           <Image
-            width={item.cover.attributes.formats[size()].width}
-            height={item.cover.attributes.formats[size()].height}
+            width={item.attributes.formats[size()].width}
+            height={item.attributes.formats[size()].height}
             key={item.id}
-            src={item.cover.attributes.formats.large.url}
+            src={item.attributes.formats.large.url}
             alt={item.name}
-            style={{ objectFit: "cover", cursor: "pointer" }}
-            onClick={() => handleClick(item)}
+            style={{ objectFit: "cover" }}
           />
         ))}
       </Masonry>
@@ -52,4 +43,4 @@ const CollectionMasonry = (props) => {
   );
 };
 
-export default CollectionMasonry;
+export default AlbumMasonry;
