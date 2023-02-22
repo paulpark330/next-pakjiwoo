@@ -28,9 +28,7 @@ const CollectionMasonry = (props) => {
   };
 
   const handleClick = (album) => {
-    console.log(album);
-
-    router.push(`/${album.category}/${album.id}`)
+    router.push(`/${album.category}/${album.id}`);
   };
 
   return (

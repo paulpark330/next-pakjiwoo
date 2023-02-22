@@ -1,12 +1,8 @@
-import { useEffect } from "react";
 import Head from "next/head";
 import { getAlbumById, getAllCollections } from "../../../helpers/api-utils";
 import AlbumMasonry from "../../../components/album/album-masonry";
 
 const Album = (props) => {
-  useEffect(() => {
-    console.log(props.album);
-  }, []);
   return (
     <>
       <div>
