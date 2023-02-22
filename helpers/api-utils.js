@@ -3,22 +3,29 @@
 const API_URL = "https://strapi-pakjiwoo-production.up.railway.app";
 
 export const getAllCollections = async () => {
-  const response = await fetch(`${API_URL}/api/photos?populate=*`);
+  const response = await fetch(
+    `${API_URL}/api/photos?populate[0]=cover&sort[0]=category%3Adesc&pagination[pageSize]=50`
+  );
   const data = await response.json();
 
-  const collections = [];
+  
 
-  data.data.forEach((collection) => {
-    collections.push({
-      id: collection.id,
-      name: collection.attributes.collectionName,
-      category: collection.attributes.category,
-      cover: collection.attributes.cover.data,
-      photos: collection.attributes.album.data,
+  if (data.data.length > 0) {
+    const collections = [];
+
+    data.data.forEach((collection) => {
+      collections.push({
+        id: collection.id,
+        name: collection.attributes.collectionName,
+        category: collection.attributes.category,
+        cover: collection.attributes.cover.data,
+      });
     });
-  });
 
-  return collections;
+    return collections;
+  } else {
+    return null;
+  }
 };
 
 export const getCollectionByName = async (name) => {
