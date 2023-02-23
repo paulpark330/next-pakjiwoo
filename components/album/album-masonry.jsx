@@ -1,6 +1,5 @@
 import { Box } from "@mui/material";
 import { Masonry } from "@mui/lab";
-import Image from "next/image";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
@@ -29,13 +28,11 @@ const AlbumMasonry = (props) => {
     <Box sx={{ width: "100%", height: "100%" }}>
       <Masonry columns={columns()} spacing={1} sx={{ margin: 0 }}>
         {props.album.map((item) => (
-          <Image
-            width={item.attributes.formats[size()].width}
-            height={item.attributes.formats[size()].height}
+          <img
             key={item.id}
             src={item.attributes.formats.large.url}
             alt={item.name}
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "contain" }}
           />
         ))}
       </Masonry>
