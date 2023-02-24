@@ -100,7 +100,6 @@ const AlbumMasonry = (props) => {
           width={props.album[index]?.attributes.formats.large.width}
           height={props.album[index]?.attributes.formats.large.height}
           className={styles.photo}
-          onClick={closeDialog}
         />
       </Dialog>
     </>
