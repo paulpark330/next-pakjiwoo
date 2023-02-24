@@ -4,6 +4,7 @@ import { Masonry } from "@mui/lab";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { useRouter } from "next/router";
+import styles from "./collection-masonry.module.scss";
 
 const CollectionMasonry = (props) => {
   const router = useRouter();
@@ -38,7 +39,7 @@ const CollectionMasonry = (props) => {
             key={item.id}
             src={item.cover.attributes.formats.small.url}
             alt={item.name}
-            style={{ objectFit: "contain", cursor: "pointer" }}
+            className={styles.photo}
             onClick={() => handleClick(item)}
           />
         ))}

@@ -76,7 +76,7 @@ const AlbumMasonry = (props) => {
               key={item.id}
               src={item.attributes.formats.small.url}
               alt={item.name}
-              style={{ objectFit: "contain", cursor: "pointer" }}
+              className={styles.preview}
               onClick={() => openDialog(index)}
             />
           ))}
