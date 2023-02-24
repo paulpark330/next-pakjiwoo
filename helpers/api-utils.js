@@ -8,7 +8,7 @@ export const getAllCollections = async () => {
   );
   const data = await response.json();
 
-  if (data.data.length > 0) {
+  if (data.data && data.data.length > 0) {
     const collections = [];
 
     data.data.forEach((collection) => {
@@ -32,7 +32,7 @@ export const getCollectionByName = async (name) => {
   );
   const data = await response.json();
 
-  if (data.data.length > 0) {
+  if (data.data && data.data.length > 0) {
     const collections = [];
     data.data.forEach((collection) => {
       collections.push({
@@ -54,7 +54,7 @@ export const getAlbumById = async (category, id) => {
   );
   const data = await response.json();
 
-  if (data.data.length > 0) {
+  if (data.data && data.data.length > 0) {
     return data.data[0].attributes.album.data;
   } else {
     return null;

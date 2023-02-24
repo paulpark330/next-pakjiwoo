@@ -1,0 +1,14 @@
+.close {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  color: white;
+  cursor: pointer;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  background-color: #121212;
+  object-fit: contain;
+}
