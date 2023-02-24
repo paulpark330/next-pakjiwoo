@@ -37,7 +37,7 @@ const CollectionMasonry = (props) => {
         {props.collection.map((item) => (
           <img
             key={item.id}
-            src={item.cover.attributes.formats.small.url}
+            src={item.cover.attributes.formats.medium.url}
             alt={item.name}
             className={styles.photo}
             onClick={() => handleClick(item)}

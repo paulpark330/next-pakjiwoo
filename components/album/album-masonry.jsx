@@ -5,7 +5,7 @@ import { useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import Image from "next/image";
-import { Close } from "@mui/icons-material";
+import { ArrowBack, ArrowForward, Close } from "@mui/icons-material";
 import styles from "./album-masonry.module.scss";
 
 const AlbumMasonry = (props) => {
@@ -93,14 +93,28 @@ const AlbumMasonry = (props) => {
           onClick={closeDialog}
           className={styles.close}
         />
-        <Image
-          src={props.album[index]?.attributes.url}
-          srcSet={props.album[index]?.attributes.formats.small.url}
-          alt={props.album[index]?.attributes.name}
-          width={props.album[index]?.attributes.formats.large.width}
-          height={props.album[index]?.attributes.formats.large.height}
-          className={styles.photo}
-        />
+        <div className={styles["photo-container"]}>
+          <Image
+            src={props.album[index]?.attributes.url}
+            srcSet={props.album[index]?.attributes.formats.small.url}
+            alt={props.album[index]?.attributes.name}
+            width={props.album[index]?.attributes.formats.large.width}
+            height={props.album[index]?.attributes.formats.large.height}
+            className={styles.photo}
+          />
+          <div className={styles.arrows}>
+            <ArrowBack
+              fontSize="medium"
+              className={styles.arrow}
+              onClick={arrowLeft}
+            />
+            <ArrowForward
+              fontSize="medium"
+              className={styles.arrow}
+              onClick={arrowRight}
+            />
+          </div>
+        </div>
       </Dialog>
     </>
   );
