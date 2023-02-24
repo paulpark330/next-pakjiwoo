@@ -74,7 +74,7 @@ const AlbumMasonry = (props) => {
           {props.album.map((item, index) => (
             <img
               key={item.id}
-              src={item.attributes.formats.small.url}
+              src={item.attributes.formats.medium.url}
               alt={item.name}
               className={styles.preview}
               onClick={() => openDialog(index)}
