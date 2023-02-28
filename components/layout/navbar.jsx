@@ -1,6 +1,6 @@
 import styles from "./navbar.module.scss";
 import Link from "next/link";
-import { Box, Button, Drawer, List, ListItem } from "@mui/material";
+import { Box, Drawer, List, ListItem } from "@mui/material";
 import { useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
@@ -9,8 +9,7 @@ import { Menu } from "@mui/icons-material";
 const Navbar = ({ navOptions }) => {
   const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
-  const isXlarge = useMediaQuery(theme.breakpoints.up("xl"));
-  const isLarge = useMediaQuery(theme.breakpoints.between("lg", "xl"));
+
   const isMedium = useMediaQuery(theme.breakpoints.between("md", "lg"));
   const isSmall = useMediaQuery(theme.breakpoints.between("sm", "md"));
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -33,6 +32,11 @@ const Navbar = ({ navOptions }) => {
             </ListItem>
           );
         })}
+        <ListItem onClick={toggleDrawer}>
+          <Link href="/contact" className={styles.option}>
+            Contact
+          </Link>
+        </ListItem>
       </List>
     </Box>
   );
@@ -55,7 +59,7 @@ const Navbar = ({ navOptions }) => {
             border: "none",
             position: "static",
             backgroundColor: "#121212",
-            color: "white"
+            color: "white",
           },
           "& .MuiList-root": {
             padding: 0,
