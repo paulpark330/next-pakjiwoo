@@ -9,8 +9,8 @@ const Layout = ({ children }) => {
     { name: "Actor/Actress", category: "actor", sort: 3 },
     { name: "Music", category: "music", sort: 4 },
     { name: "Sihogonsa", category: "sihogonsa", sort: 5 },
-    { name: "Wedding", category: "wedding", sort: 6 },
-    { name: "Musical", category: "musical", sort: 7 },
+    // { name: "Wedding", category: "wedding", sort: 6 },
+    // { name: "Musical", category: "musical", sort: 7 },
   ];
 
   return (

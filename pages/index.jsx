@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { getAllCollections } from "../helpers/api-utils";
+import shuffle from "lodash.shuffle";
 
 import CollectionMasonry from "../components/collections/collection-masonry";
 
@@ -22,7 +23,7 @@ export const getStaticProps = async () => {
   const allCollections = await getAllCollections();
 
   return {
-    props: { collection: allCollections },
+    props: { collection: shuffle(allCollections) },
     revalidate: 60,
   };
 };
